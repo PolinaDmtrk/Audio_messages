@@ -1,0 +1,93 @@
+body, div, p, h1, h2, h3, a, input, select
+	margin: 0
+	padding: 0
+	font-family: 'Arial', sans-serif
+body
+	display: flex
+	justify-content: center
+.container
+	width: 1000px
+	border: 1px solid lightgrey
+.header
+	border-bottom: 1px solid lightgrey
+	margin-bottom: 20px
+h1
+	font-size: 40px
+	margin: 10px 0 10px 20px
+	font-weight: normal
+.filter
+	height: 70px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	&_item
+		width: 250px
+		height: 70px
+		padding-left: 20px
+		p
+			font-weight: bold
+			margin: 3px 0 3px 0
+		select, input, button
+			width: 200px
+			height: 35px
+			border: 2px solid lightgrey
+			border-radius: 5px
+			font-size: 15px
+		input
+			height: 31px
+		button
+			margin-top: 23px
+			background-color: white
+			color: lightblue
+			font-weight: bold
+			border: 2px dashed lightblue
+	.select
+		position: relative
+	.select i
+		position: absolute
+		left: 200px
+		top: 35px
+		z-index: 1
+	select 
+		padding-right: 25px
+		-webkit-appearance: none
+		-moz-appearance: none
+		appearance: none
+table
+	width: 960px
+	border-collapse: collapse
+	margin: 20px
+	text-align: left
+	th:first-child, td:first-child
+		width: 200px
+	th
+		border-bottom: 2px solid red
+	tr:nth-child(2n)
+		background-color: whitesmoke
+.paginator
+	display: flex
+	justify-content: center
+	margin-bottom: 20px
+	a
+		padding: 0 10px
+		text-decoration: none
+		color: blue
+		&:hover
+			background-color: whitesmoke
+	button
+		border: 1px solid blue
+		border-radius: 100%
+		background-color: transparent
+		color: blue
+i.fas
+	text-align: center
+	margin-right: -21px
+	position: relative
+	z-index: 1
+	color: lightgrey
+audio::-webkit-media-controls-panel
+	background: transparent
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-volume-slider-container,
+audio::-webkit-media-controls-volume-slider
+	display: none

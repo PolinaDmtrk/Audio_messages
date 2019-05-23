@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="A minimal Web Design">
+
+	<title>Голосовая почта</title>
+	<link href="css/main.css" rel="stylesheet">
+
+	<!-- <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Голосовая почта</h1>
+		</div>
+		<div class="filter">
+			<div class="filter_item select">
+				<p>Период</p>
+				<select id="period">
+					<option id="0">Все время</option>
+					<option id="1">За сегодня</option>
+					<option id="2">За вчера</option>
+					<option id="3">За последнюю неделю</option>
+					<option id="4">За текущий месяц</option>
+					<option id="5">За прошлый месяц</option>
+				</select>
+				<i class="fas fa-chevron-down"></i>
+			</div>
+			<div class="filter_item" id="search">
+				<p>Номер</p>
+				<i class="fas fa-search"></i>
+				<input type="text" name="search">
+			</div>
+			<div class="filter_item select">
+				<p>Длительность</p>
+				<select id="duration">
+					<option id="0">Все</option>
+					<option id="1">до 1 минуты</option>
+					<option id="2">до 3 минут</option>
+					<option id="3">до 5 минут</option>
+					<option id="4">до 10 минут</option>
+				</select>
+				<i class="fas fa-chevron-down"></i>
+			</div>
+			<div class="filter_item discard">
+				<button>Сбросить фильтр</button>
+			</div>
+		</div>
+		<div class="messages">
+			<table id="data">
+				<thead>
+					<tr>
+						<th>Дата</th>
+						<th>Номер</th>
+						<th>Запись сообщения</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<div class="paginator">
+				<div class="prevPage">
+					<button><</button>
+				</div>
+				<div class="pages">
+				</div>
+				<div class="nextPage">
+					<button>></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+	<script src="index.js"></script>
+</body>
+</html>
