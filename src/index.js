@@ -10,6 +10,7 @@ $(document).ready ( () => {
         duration: 0
     };
 
+    //Получение данных из файла и отрисовка таблицы с сообщениями
     getData().then(
         data => {
             $(data).find('Data').each(function(i, item) {
@@ -24,29 +25,35 @@ $(document).ready ( () => {
             filteredMessages = messages;
         }).catch(error => console.error('Error:', error));
 
+    //Перерисовка таблицы по нажатию на страницу
     $('.pages').on('click', '.page', function() {
         currentPage = $(this).text();
         drawData(filteredMessages, currentPage, messagesPerPage);
     });
+    //Перерисовка таблицы по нажатию на кнопку предыдущей страницы
     $('.prevPage button').on('click', () => {
         if (currentPage != 1) {currentPage--};
         drawData(filteredMessages, currentPage, messagesPerPage);
     });
+    //Перерисовка таблицы по нажатию на кнопку следующей страницы
     $('.nextPage button').on('click', () => {
         if (currentPage != Math.ceil(filteredMessages.length/messagesPerPage)) {currentPage++};
         drawData(filteredMessages, currentPage, messagesPerPage);
     });
 
+    //Фильтр сообщений по дате получения
     $('#period').on('change', () => {
         filters.period = $('#period option:selected').val();
         filteredMessages = filterData(messages, filters);
     });
 
+    //Фильтр сообщений по длительности
     $('#duration').on('change', () => {
         filters.duration = $('#duration option:selected').val();
         filteredMessages = filterData(messages, filters);
     });
 
+    //Фильтр сообщений по номеру
     $('#search').on('input', () => {
         $('#search i').css('display', 'none');
         filteredMessages = filterData(messages, filters);
@@ -57,6 +64,7 @@ $(document).ready ( () => {
         }
     });
 
+    //Очищение фильтров
     $('#discard').on('click', () => {
         filters = {
             period: 0,
@@ -68,9 +76,12 @@ $(document).ready ( () => {
         filteredMessages = filterData(messages, filters);
     });
 
+    //Действия с аудио-файлами
     let progress;
-    $('#data').on('click', '.audio button', function(e) {
-        
+    $('#data').on('click', '.audio button', function() {
+        //При нажатии на кнопку проигрывания:
+
+        //Все остальные аудио останавливаются
         let tr = $(this);
         while (tr[0].className != 'item') {
             tr = tr.parent();
@@ -86,6 +97,7 @@ $(document).ready ( () => {
         const bar = currentDiv.find(".myBar");
         const percentPerSec = 100 / Math.ceil(audio[0].duration);
 
+        //Текущее аудио либо начинает проигрываться, либо останавливается, в зависимости от предыдущего состояния
         if (audio[0].paused) {
             $(this).find('i').removeClass("fa-play-circle");
             $(this).find('i').addClass("fa-pause-circle");
@@ -99,6 +111,7 @@ $(document).ready ( () => {
             clearInterval(progress)
         }
 
+        //Отображение текущего времени аудио
         function runProgress() {
             const currentTime = audio[0].currentTime;
             secondsLabel[0].innerHTML = modifyTime(Math.ceil(currentTime % 60));
