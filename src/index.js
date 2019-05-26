@@ -70,6 +70,15 @@ $(document).ready ( () => {
 
     let progress;
     $('#data').on('click', '.audio button', function(e) {
+        
+        let tr = $(this);
+        while (tr[0].className != 'item') {
+            tr = tr.parent();
+        }
+        tr.siblings().find('audio').each((i, audio) => {
+            audio.pause();
+        });
+
         const currentDiv = $(this).parent('div');
         const audio = currentDiv.siblings('audio');
         const secondsLabel = currentDiv.find(".seconds");
@@ -78,14 +87,14 @@ $(document).ready ( () => {
         const percentPerSec = 100 / Math.ceil(audio[0].duration);
 
         if (audio[0].paused) {
-            $(this).find('i').removeClass("fa-play-circle")
-            $(this).find('i').addClass("fa-pause-circle")
+            $(this).find('i').removeClass("fa-play-circle");
+            $(this).find('i').addClass("fa-pause-circle");
             audio[0].play();
             progress = setInterval(runProgress, 1000);
         }
         else {
-            $(this).find('i').removeClass("fa-pause-circle")
-            $(this).find('i').addClass("fa-play-circle")
+            $(this).find('i').removeClass("fa-pause-circle");
+            $(this).find('i').addClass("fa-play-circle");
             audio[0].pause();
             clearInterval(progress)
         }
